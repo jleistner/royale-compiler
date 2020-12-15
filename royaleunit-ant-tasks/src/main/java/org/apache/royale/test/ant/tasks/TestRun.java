@@ -104,7 +104,8 @@ public class TestRun
                 configuration.getOs(), 
                 configuration.getPlayer(), 
                 configuration.getCommand(), 
-                configuration.isLocalTrusted());
+                configuration.isLocalTrusted(), 
+                configuration.getAdditionalArguments());
         
         command.setProject(project);
         command.setSwf(configuration.getSwf());

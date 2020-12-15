@@ -33,9 +33,10 @@ public class PlayerCommandFactory
      * @param player  "flash" or "air"
      * @param customCommand
      * @param localTrusted
+     * @param additionalArguments
      * @return Desired player command with platform defaults possibly wrapped in a custom command
      */
-    public static PlayerCommand createPlayer(OperatingSystem os, String player, File customCommand, boolean localTrusted)
+    public static PlayerCommand createPlayer(OperatingSystem os, String player, File customCommand, boolean localTrusted, String additionalArguments)
     {
         PlayerCommand newInstance = null;
 
@@ -73,6 +74,7 @@ public class PlayerCommandFactory
             CustomPlayerCommand customInstance = new CustomPlayerCommand();
             customInstance.setProxiedCommand(defaultInstance);
             customInstance.setExecutable(customCommand);
+            customInstance.setAdditionalArguments(additionalArguments);
             newInstance = customInstance;
         }
         else

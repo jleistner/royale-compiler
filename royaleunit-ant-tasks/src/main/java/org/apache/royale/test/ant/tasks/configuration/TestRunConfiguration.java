@@ -29,6 +29,7 @@ public class TestRunConfiguration implements StepConfiguration
 
     private String player;
     private File command = null;
+    private String additionalArguments;
     private int display = 99;
     private boolean failOnTestFailure = false;
     private String failureProperty = "royaleunit.failed";
@@ -54,6 +55,16 @@ public class TestRunConfiguration implements StepConfiguration
         this.command = command;
     }
     
+    public String getAdditionalArguments()
+    {
+        return additionalArguments;
+    }
+
+    public void setAdditionalArguments(final String additionalArguments)
+    {
+        this.additionalArguments = additionalArguments;
+    }
+
     public boolean isCustomCommand()
     {
         return command != null;
@@ -270,6 +281,7 @@ public class TestRunConfiguration implements StepConfiguration
             LoggingUtil.log("\tcommand: [" + command + "]");
         }
         
+        LoggingUtil.log("\tadditionalArguments: [" + additionalArguments + "]");
         LoggingUtil.log("\tport: [" + port + "]");
         LoggingUtil.log("\tswf: [" + swf + "]");
         LoggingUtil.log("\ttimeout: [" + socketTimeout + "ms]");

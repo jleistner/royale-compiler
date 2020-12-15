@@ -94,6 +94,11 @@ public class TaskConfiguration
         }
     }
     
+    public void setAdditionalArguments(String additionalArguments)
+    {
+        testRunConfiguration.setAdditionalArguments(additionalArguments);
+    }
+
     public void setDisplay(int display)
     {
         testRunConfiguration.setDisplay(display);

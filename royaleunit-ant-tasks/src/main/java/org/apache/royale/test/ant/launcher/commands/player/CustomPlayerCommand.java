@@ -28,6 +28,7 @@ public class CustomPlayerCommand implements PlayerCommand
 {
     private DefaultPlayerCommand proxiedCommand;
     private File executable;
+    private String additionalArguments;
 
     public PlayerCommand getProxiedCommand()
     {
@@ -49,6 +50,16 @@ public class CustomPlayerCommand implements PlayerCommand
         this.executable = executable;
     }
     
+    public String getAddtionalArgumets()
+    {
+        return additionalArguments;
+    }
+
+    public void setAdditionalArguments(String additionalArguments)
+    {
+        this.additionalArguments = additionalArguments;
+    }
+
     public void setProject(Project project)
     {
         proxiedCommand.setProject(project);
@@ -80,12 +91,16 @@ public class CustomPlayerCommand implements PlayerCommand
         proxiedCommand.getCommandLine().clearArgs();
         
         if(getUrl() != null)
-        {    	  
-           proxiedCommand.getCommandLine().addArguments(new String[]{getUrl()});
-        } 
-        else 
-        {  
-           proxiedCommand.getCommandLine().addArguments(new String[]{getFileToExecute().getAbsolutePath()});
+        {
+            proxiedCommand.getCommandLine().addArguments(new String[] {getUrl()});
+        }
+        else
+        {
+            if (getAddtionalArgumets() != null)
+            {
+                proxiedCommand.getCommandLine().addArguments(additionalArguments.split(" "));
+            }
+            proxiedCommand.getCommandLine().addArguments(new String[] {getFileToExecute().getAbsolutePath()});
         }
 
     }

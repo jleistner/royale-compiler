@@ -142,6 +142,11 @@ public class RoyaleUnitTask extends Task implements DynamicElement
         configuration.setCommand(executableFilePath);
     }
 
+    public void setAdditionalArguments(String additionalArguments)
+    {
+        configuration.setAdditionalArguments(additionalArguments);
+    }
+
     public void setHeadless(boolean headless)
     {
         configuration.setHeadless(headless);
